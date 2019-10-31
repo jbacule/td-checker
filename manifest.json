@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "TD Validator",
-  "version": "1.0",
+  "version": "1.4",
   "author": "shujo",
   "description":"Validates/check total break time, no project & not working in Time Doctor",
   "icons":{
