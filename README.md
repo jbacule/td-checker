@@ -1,2 +1,2 @@
-# td-validator
-chrome extension for validating time doctor site
+# td-checker
+chrome extension for checking time doctor app
