@@ -1,9 +1,18 @@
 $(function() {
-    $('#content-container > div.ng-scope > div.td-page.td-page-edit-time.contentWrapper.ng-scope > div.td-filters.td-filters-fixed.td-filters-no-user-selection > div.pull-right.td-filters-right-side').append(`<p id="customElem" class="pull-left" style="background-color: #2B405B; color: white; padding: 6px 6px; border-radius:5px; position:relative; border: 1px solid #D5DDE0; font-size:15px !important;">Calculating...</p>`);
-    setTimeout(()=>{
-       validateTD();
-    },4000);
+   setTimeout(function(){
+    $('#content-container > div.ng-scope > div.td-page.td-page-edit-time.contentWrapper.ng-scope > div.td-filters.td-filters-fixed.td-filters-no-user-selection > div.pull-right.td-filters-right-side')
+      .append(`<div id="customElem" class="pull-left" style="display: inline-block; background-color: #2B405B; color: white; padding: 6px 6px; border-radius:5px; position:relative; border: 1px solid #D5DDE0; font-size:15px !important;">Calculating...</div>`);
+      setTimeout(()=>{
+         validateTD();
+      },4000);
+   },1500);
 });
+
+//document.getElementById("btnRefresh").onclick = function() {myFunction()};
+
+function myFunction() {
+  document.getElementById("tdContent").innerHTML = "YOU CLICKED ME!";
+}
 
 //reload validator
 document.body.onkeyup = function(e){
@@ -49,11 +58,15 @@ function validateTD(){
 }
 
 function setValidator(NoProject, countNotWorking, totalBreak){
+  //var btnRefresh = '<button id="btnRefresh" onclick="getElementById("tdContent").innerHTML = "YOU CLICKED ME!"" style="margin-right:5px; float: left; border: 0; background-color: #EC5F2F; color: white; box-shadow: none; border-radius: 2px;">Refresh</button>'
+  //var btnRefresh = '<span style="font-size:10px; ">[Refresh: Ctrl + Enter]</span>';
    var NoProjectElem = NoProject != 0 ? `<span style="color: #F46736; font-weight: bold;">${NoProject}</span>` : `<span style="color: #51BE71; font-weight: bold;">${NoProject}</span>`;
    var countNotWorkingElem = countNotWorking > 3 ? `<span style="color: #F46736; font-weight: bold;">${countNotWorking}</span>` : `<span style="color: #51BE71; font-weight: bold;">${countNotWorking}</span>`;
    var totalBreakElem = `<span style="color: #51BE71; font-weight: bold;">${totalBreak}</span>`;
-   $('#customElem').html(`No Project: ${NoProjectElem} | Not Working: ${countNotWorkingElem} | Total Break: ${totalBreakElem}`);
+   $('#customElem').html(`<div id="tdContent" style="float:left;">No Project: ${NoProjectElem} | Not Working: ${countNotWorkingElem} | Total Break: ${totalBreakElem}</div>`);
 }
+
+
 
 function addTimes(times = []) {
     var minute = 0;
